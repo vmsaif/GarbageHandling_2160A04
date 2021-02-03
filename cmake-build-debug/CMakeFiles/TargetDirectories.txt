@@ -1,0 +1,3 @@
+C:/Users/vmsai/CLionProjects/GarbageHandling_2160A04/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/vmsai/CLionProjects/GarbageHandling_2160A04/cmake-build-debug/CMakeFiles/2160A04.dir
+C:/Users/vmsai/CLionProjects/GarbageHandling_2160A04/cmake-build-debug/CMakeFiles/edit_cache.dir

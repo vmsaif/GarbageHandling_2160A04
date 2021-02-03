@@ -1,0 +1,109 @@
+COMP 2160 – Assignment 4
+
+Programming practices
+
+Due April 12th, 2020 at 11:59 pm
+
+Description
+
+In assignment 4 you’re going to apply everything that we’ve learned in class so far to build
+something that you’ve used extensively in other languages – garbage collection!
+
+Notes
+
+Read the entire assignment document before starting. The general structure and idea for
+memory management is described extensively in class. Please review posted lecture
+materials for these details. Your programs must run correctly both with assertions enabled and
+disabled (when compiled with and without the -DNDEBUG option).Please be sure to follow
+the programming standards; not doing so will result in a loss of marks. Remember to
+complete the Honesty Declaration Checklist (you will not receive scores for your
+assignments until the checklist is completed).All submitted assignments will be
+scanned with automated software to monitor for academic integrity violations. Your
+assignment code must be handed in electronically. See Submitting your assignment
+section below for more information.Late assignments are not accepted. The due
+date is enforced electronically.
+
+Objectives
+
+Real-world application of concepts
+Question 1: The Object Manager
+
+Summary
+
+“Hey!” I can hear you saying. “You said we were going to implement a garbage collector,
+but now you’re talking about an ‘object manager’? What’s the deal?”
+
+Here’s the deal: We can’t really implement garbage collection in C without changing
+the language itself. That’s why we have languages like Java and Go, and C#, and D, and Python,
+that all have garbage collection built into the language itself.
+
+An object manager is an application of the collection ADT (like in A3), but now we’re
+going to store generic objects in a managed buffer. That is, our container is going
+to be able to hold any kind of object we want and won’t be limited to just strings.
+Using a buffer means that we must directly manage the memory and references to objects.
+This means that our object manager must implement reference counting and a garbage
+collector so that we properly handle creation and deletion of objects. The object
+manager’s interface is given by ObjectManager.h and the implementation you write
+will be in a file named ObjectManager.c. Your task is to implement the functions
+required for the object manager. This includes all the functions listed in
+ObjectManager.h, along with any (private) static functions that will be useful.
+You will also need to define appropriate data types and data structures for keeping
+track of the objects that have been allocated. You are NOT allowed to change
+ObjectManager.h. To summarize, the functionalities you have to implement are:
+
+initPool() – Initialize the object manager upon starting.
+destroyPool() – Clean up the object manager upon quitting.
+insertObject(size) – Request a block of memory of given size from the object manager.
+retrieveObject(id) – Retrieve the address of an object, identified by the reference id.
+addReference(id) – Increment the reference count for the object with reference id.
+dropReference(id) – Decrement the reference count for the object with reference id.
+compact() – Initiate garbage collection (see below). Note this function is NOT part
+            of the interface available to the client code. That is, it’s not declared in
+            ObjectManager.h, but you need to implement it and call it in your own implementation.
+dumpPool() – Print (to stdout) info about each object that is currently allocated
+             including its id, start address, and size.
+Garbage collection
+
+You will implement a Mark and Sweep Defragmenting/Mark-compact garbage collector,
+as described in class. This function is implemented by compact() in the object manager.
+So that we can evaluate your implementation, every time the garbage collector runs,
+print out the following statistics (to stdout):
+
+The number of objects that exist
+The current number of bytes in use
+The number of bytes collected
+Data structures
+
+You must manage the tracking of allocated objects using an index, which will be implemented using a linked list. Each node in your linked list contains the information needed to manage its associated object. Note that the index is implemented inside ObjectManager.c, you don’t need any additional files like list.{h,c}.
+
+Testing your Object Manager
+
+You can start with main0.c on the course website.
+
+At a minimum, the code you hand in should apply the concepts of DbC, as required in A2 and A3.
+
+Other comments
+
+Try to start the assignment as soon as possible.
+Test each feature as it is implemented. Create your own test cases to test your code.
+You will have multiple files, so a Makefile is required. You only need to include a rule for main.c so that you and the grader can swap in different main files by renaming and touching the file.
+Submitting your assignment
+
+Create a directory called comp2160-a4-<yourlastname>-<yourstudentid>. Since there’s only one question this time, all your files can go directly in this directory.
+
+Then run the command:
+
+handin 2160 a4 comp2160-a4-<yourlastname>-<yourstudentid>
+
+You may optionally include a README file in the root of your directory that explains anything unusual about compiling or running your programs.
+You may resubmit your assignment as many times as you want, but only the latest submission will be kept.
+We only accept homework submissions via handin. Please do not e-mail your homework to the instructor or TAs – it will be ignored.
+You must submit an Honesty Declaration (digitally on UM Learn). Assignments submitted without a corresponding Honesty Declaration will not be graded.
+We reserve the right to refuse to grade the homework, or to deduct marks if these instructions are not followed.
+Evaluation
+
+Your assignment is worth 36 points.
+
+Note that your code must compile – no part marks will be given for code that does not compile. Note further that your code must compile with clang++.
+
+Note further that your code must compile with make. Graders will not manually compile any code by running clang for this assignment, even if you write instructions in the README.

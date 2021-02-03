@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/vmsai/CLionProjects/GarbageHandling_2160A04/ObjectManager.c
+assert.h
+-
+stdlib.h
+-
+stdbool.h
+-
+stdio.h
+-
+string.h
+-
+ObjectManager.h
+C:/Users/vmsai/CLionProjects/GarbageHandling_2160A04/ObjectManager.h
+
+C:/Users/vmsai/CLionProjects/GarbageHandling_2160A04/ObjectManager.h
+
+C:/Users/vmsai/CLionProjects/GarbageHandling_2160A04/main0.c
+ObjectManager.h
+C:/Users/vmsai/CLionProjects/GarbageHandling_2160A04/ObjectManager.h
+stdio.h
+-
+
